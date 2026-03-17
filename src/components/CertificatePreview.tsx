@@ -18,19 +18,25 @@ const CertificatePreview = ({ name, onBack }: CertificatePreviewProps) => {
     if (!certRef.current) return;
     setLoading(true);
     try {
+      const scale = 3;
       const canvas = await html2canvas(certRef.current, {
-        scale: 2,
+        scale,
         useCORS: true,
         backgroundColor: null,
         logging: false,
       });
       const imgData = canvas.toDataURL("image/png");
+
+      // Use the original element dimensions for the PDF page size
+      const elW = certRef.current.offsetWidth;
+      const elH = certRef.current.offsetHeight;
+
       const pdf = new jsPDF({
         orientation: "landscape",
         unit: "px",
-        format: [canvas.width / 2, canvas.height / 2],
+        format: [elW, elH],
       });
-      pdf.addImage(imgData, "PNG", 0, 0, canvas.width / 2, canvas.height / 2);
+      pdf.addImage(imgData, "PNG", 0, 0, elW, elH);
       const safeName = name.replace(/\s+/g, "_");
       pdf.save(`${safeName}_Certificate.pdf`);
     } catch (err) {
@@ -42,7 +48,7 @@ const CertificatePreview = ({ name, onBack }: CertificatePreviewProps) => {
 
   return (
     <div className="min-h-screen flex flex-col items-center px-4 py-10">
-      <div className="w-full max-w-4xl animate-fade-in-up">
+      <div className="w-full max-w-5xl animate-fade-in-up">
         {/* Actions */}
         <div className="flex items-center justify-between mb-6">
           <Button variant="ghost" onClick={onBack} className="gap-2 text-muted-foreground hover:text-foreground">
@@ -58,8 +64,8 @@ const CertificatePreview = ({ name, onBack }: CertificatePreviewProps) => {
           </Button>
         </div>
 
-        {/* Certificate */}
-        <div className="rounded-lg shadow-2xl overflow-hidden">
+        {/* Certificate — scrollable on small screens */}
+        <div className="rounded-lg shadow-2xl overflow-auto">
           <CertificateTemplate ref={certRef} name={name} />
         </div>
       </div>
