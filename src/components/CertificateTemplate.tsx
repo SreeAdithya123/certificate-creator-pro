@@ -39,9 +39,8 @@ const CertificateTemplate = forwardRef<HTMLDivElement, CertificateTemplateProps>
         <div
           style={{
             position: "absolute",
-            left: 58,
-            /* ~47% places name on the line in the certificate */
-            top: "46.5%",
+            left: 265,
+            top: "44.5%",
             pointerEvents: "none",
             lineHeight: 1,
           }}
