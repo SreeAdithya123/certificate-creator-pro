@@ -40,7 +40,7 @@ const CertificateTemplate = forwardRef<HTMLDivElement, CertificateTemplateProps>
           style={{
             position: "absolute",
             left: 265,
-            top: "44.5%",
+            top: "43%",
             pointerEvents: "none",
             lineHeight: 1,
           }}
