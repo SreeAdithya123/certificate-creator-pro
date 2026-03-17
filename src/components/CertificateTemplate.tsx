@@ -7,49 +7,50 @@ interface CertificateTemplateProps {
 
 const CertificateTemplate = forwardRef<HTMLDivElement, CertificateTemplateProps>(
   ({ name }, ref) => {
+    // Match the uploaded image's landscape aspect ratio (~1500x850 ≈ 1.76:1)
     return (
       <div
         ref={ref}
         style={{
-          width: 960,
-          height: 680,
+          width: 1060,
+          height: 600,
           position: "relative",
           overflow: "hidden",
         }}
       >
-        {/* Certificate background image */}
+        {/* Certificate background — full image, no cropping */}
         <img
           src={certificateBg}
           alt="Certificate"
+          crossOrigin="anonymous"
           style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: "fill",
             display: "block",
           }}
-          crossOrigin="anonymous"
         />
 
-        {/* Participant name overlay — positioned on the line above "for successfully participating" */}
+        {/* Participant name — on the line above "for successfully participating" */}
         <div
           style={{
             position: "absolute",
-            top: "52%",
-            left: 60,
-            right: 60,
-            transform: "translateY(-100%)",
+            left: 62,
+            top: 295,
             pointerEvents: "none",
           }}
         >
           <span
             style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: 36,
-              fontWeight: 700,
+              fontSize: 30,
+              fontWeight: 400,
               fontStyle: "italic",
-              color: "hsl(222 35% 20%)",
-              display: "block",
-              paddingBottom: 8,
+              color: "hsl(220 15% 25%)",
+              letterSpacing: 0.5,
             }}
           >
             {name}
