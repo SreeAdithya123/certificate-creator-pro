@@ -34,17 +34,16 @@ const CertificateTemplate = forwardRef<HTMLDivElement, CertificateTemplateProps>
           }}
         />
 
-        {/* Participant name — forced above the line with a small fixed gap */}
+        {/* Participant name — positioned on the line between "presented to" and "for successfully" */}
+        {/* Using percentage-based top to stay consistent across scales */}
         <div
           style={{
             position: "absolute",
             left: 58,
-            top: 0,
-            height: "43%",
-            display: "flex",
-            alignItems: "flex-end",
-            paddingBottom: 2,
+            /* ~47% places name on the line in the certificate */
+            top: "46.5%",
             pointerEvents: "none",
+            lineHeight: 1,
           }}
         >
           <span
@@ -55,9 +54,7 @@ const CertificateTemplate = forwardRef<HTMLDivElement, CertificateTemplateProps>
               fontStyle: "italic",
               color: "hsl(220 20% 22%)",
               letterSpacing: 0.3,
-              lineHeight: 1,
-              transform: "translateY(-6px)",
-              display: "block",
+              display: "inline-block",
             }}
           >
             {name}
