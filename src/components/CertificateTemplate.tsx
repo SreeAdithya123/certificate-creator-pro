@@ -34,12 +34,11 @@ const CertificateTemplate = forwardRef<HTMLDivElement, CertificateTemplateProps>
           }}
         />
 
-        {/* Participant name — bottom-aligned so text sits 2px above the line */}
+        {/* Participant name — forced above the line with a small fixed gap */}
         <div
           style={{
             position: "absolute",
             left: 58,
-            /* The line is at ~43.5% from top; place bottom of this div 2px above it */
             top: 0,
             height: "43%",
             display: "flex",
@@ -57,6 +56,7 @@ const CertificateTemplate = forwardRef<HTMLDivElement, CertificateTemplateProps>
               color: "hsl(220 20% 22%)",
               letterSpacing: 0.3,
               lineHeight: 1,
+              transform: "translateY(-6px)",
               display: "block",
             }}
           >
