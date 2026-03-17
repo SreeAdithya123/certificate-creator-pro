@@ -7,7 +7,6 @@ interface CertificateTemplateProps {
 
 const CertificateTemplate = forwardRef<HTMLDivElement, CertificateTemplateProps>(
   ({ name }, ref) => {
-    // Match the uploaded image's landscape aspect ratio (~1500x850 ≈ 1.76:1)
     return (
       <div
         ref={ref}
@@ -16,6 +15,7 @@ const CertificateTemplate = forwardRef<HTMLDivElement, CertificateTemplateProps>
           height: 600,
           position: "relative",
           overflow: "hidden",
+          background: "#f0eef3",
         }}
       >
         {/* Certificate background — full image, no cropping */}
@@ -27,30 +27,34 @@ const CertificateTemplate = forwardRef<HTMLDivElement, CertificateTemplateProps>
             position: "absolute",
             top: 0,
             left: 0,
-            width: "100%",
-            height: "100%",
+            width: 1060,
+            height: 600,
             objectFit: "fill",
             display: "block",
           }}
         />
 
-        {/* Participant name — on the line above "for successfully participating" */}
+        {/* Participant name — positioned on the line between "presented to" and "for successfully" */}
+        {/* Using percentage-based top to stay consistent across scales */}
         <div
           style={{
             position: "absolute",
-            left: 62,
-            top: 295,
+            left: 58,
+            /* ~47% places name on the line in the certificate */
+            top: "46.5%",
             pointerEvents: "none",
+            lineHeight: 1,
           }}
         >
           <span
             style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: 30,
+              fontSize: 28,
               fontWeight: 400,
               fontStyle: "italic",
-              color: "hsl(220 15% 25%)",
-              letterSpacing: 0.5,
+              color: "hsl(220 20% 22%)",
+              letterSpacing: 0.3,
+              display: "inline-block",
             }}
           >
             {name}
