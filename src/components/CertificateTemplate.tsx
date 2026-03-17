@@ -14,210 +14,280 @@ const CertificateTemplate = forwardRef<HTMLDivElement, CertificateTemplateProps>
           height: 680,
           position: "relative",
           overflow: "hidden",
-          background: "linear-gradient(135deg, hsl(250 60% 97%) 0%, hsl(0 0% 100%) 40%, hsl(260 40% 96%) 100%)",
+          background: "linear-gradient(160deg, hsl(220 20% 94%) 0%, hsl(250 30% 95%) 30%, hsl(0 0% 100%) 50%, hsl(260 30% 94%) 100%)",
           fontFamily: "'Public Sans', sans-serif",
         }}
       >
-        {/* Decorative border */}
+        {/* Outer decorative border */}
         <div
           style={{
             position: "absolute",
-            inset: 16,
-            border: "2px solid hsl(35 92% 33% / 0.35)",
-            borderRadius: 8,
+            inset: 14,
+            border: "1.5px solid hsl(220 15% 80%)",
             pointerEvents: "none",
           }}
         />
+        {/* Inner decorative border */}
         <div
           style={{
             position: "absolute",
-            inset: 22,
-            border: "1px solid hsl(35 92% 33% / 0.18)",
-            borderRadius: 6,
+            inset: 20,
+            border: "1px solid hsl(220 15% 85%)",
             pointerEvents: "none",
           }}
         />
 
-        {/* Purple wave decoration — bottom-right */}
+        {/* Purple/blue gradient waves — bottom-right */}
         <svg
-          style={{ position: "absolute", bottom: 0, right: 0, width: 400, height: 280, opacity: 0.18 }}
-          viewBox="0 0 400 280"
+          style={{ position: "absolute", bottom: 0, right: 0, width: 480, height: 320, opacity: 0.35 }}
+          viewBox="0 0 480 320"
           fill="none"
         >
           <path
-            d="M400 280V80C350 120 280 40 220 80C160 120 120 60 60 100C30 120 0 100 0 100V280H400Z"
-            fill="url(#waveGrad)"
+            d="M480 320V100C440 140 380 60 320 100C260 140 200 70 140 110C80 150 40 120 0 140V320H480Z"
+            fill="url(#wave1)"
+          />
+          <path
+            d="M480 320V160C430 190 370 120 310 160C250 200 190 140 130 170C70 200 30 180 0 190V320H480Z"
+            fill="url(#wave2)"
+            opacity="0.6"
+          />
+          <path
+            d="M480 320V220C420 240 360 200 300 230C240 260 180 220 120 240C60 260 20 250 0 260V320H480Z"
+            fill="url(#wave3)"
+            opacity="0.5"
           />
           <defs>
-            <linearGradient id="waveGrad" x1="0" y1="0" x2="400" y2="280">
-              <stop offset="0%" stopColor="hsl(260 50% 70%)" />
-              <stop offset="100%" stopColor="hsl(222 47% 30%)" />
+            <linearGradient id="wave1" x1="0" y1="80" x2="480" y2="320">
+              <stop offset="0%" stopColor="hsl(250 40% 82%)" />
+              <stop offset="100%" stopColor="hsl(280 35% 75%)" />
+            </linearGradient>
+            <linearGradient id="wave2" x1="0" y1="140" x2="480" y2="320">
+              <stop offset="0%" stopColor="hsl(230 40% 78%)" />
+              <stop offset="100%" stopColor="hsl(270 40% 72%)" />
+            </linearGradient>
+            <linearGradient id="wave3" x1="0" y1="200" x2="480" y2="320">
+              <stop offset="0%" stopColor="hsl(260 45% 75%)" />
+              <stop offset="100%" stopColor="hsl(290 35% 70%)" />
             </linearGradient>
           </defs>
         </svg>
 
-        {/* Top-left wave */}
-        <svg
-          style={{ position: "absolute", top: 0, left: 0, width: 300, height: 200, opacity: 0.10 }}
-          viewBox="0 0 300 200"
-          fill="none"
-        >
-          <path
-            d="M0 0V140C50 100 100 160 160 120C220 80 260 130 300 100V0H0Z"
-            fill="url(#waveGrad2)"
-          />
-          <defs>
-            <linearGradient id="waveGrad2" x1="0" y1="0" x2="300" y2="200">
-              <stop offset="0%" stopColor="hsl(222 47% 30%)" />
-              <stop offset="100%" stopColor="hsl(260 50% 70%)" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        {/* Content */}
+        {/* Content — left-aligned */}
         <div
           style={{
             position: "relative",
             zIndex: 1,
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
             height: "100%",
-            padding: "48px 64px",
-            textAlign: "center",
+            padding: "48px 60px 44px 60px",
           }}
         >
-          {/* Logo / Academy Name */}
-          <div style={{ marginBottom: 4 }}>
-            <span
-              style={{
-                fontFamily: "'Cinzel', serif",
-                fontSize: 15,
-                fontWeight: 700,
-                letterSpacing: 3,
-                color: "hsl(222 47% 11%)",
-                textTransform: "uppercase",
-              }}
-            >
-              Artificial Intelligence Academy
-            </span>
+          {/* Top: Logo + Academy Name */}
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24 }}>
+            {/* Brain icon placeholder */}
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ flexShrink: 0 }}>
+              <circle cx="24" cy="24" r="22" stroke="hsl(222 30% 40%)" strokeWidth="1" fill="none" />
+              <path
+                d="M24 10C20 10 17 13 17 16C17 17.5 17.5 18.8 18.3 19.8C16.9 20.8 16 22.3 16 24C16 25.5 16.7 26.8 17.8 27.7C17.3 28.5 17 29.5 17 30.5C17 33.5 19.5 36 22.5 36H25.5C28.5 36 31 33.5 31 30.5C31 29.5 30.7 28.5 30.2 27.7C31.3 26.8 32 25.5 32 24C32 22.3 31.1 20.8 29.7 19.8C30.5 18.8 31 17.5 31 16C31 13 28 10 24 10Z"
+                stroke="hsl(222 30% 40%)"
+                strokeWidth="1.2"
+                fill="none"
+              />
+              <line x1="24" y1="16" x2="24" y2="36" stroke="hsl(222 30% 40%)" strokeWidth="0.8" />
+              <line x1="20" y1="20" x2="28" y2="20" stroke="hsl(222 30% 40%)" strokeWidth="0.6" />
+              <line x1="19" y1="24" x2="29" y2="24" stroke="hsl(222 30% 40%)" strokeWidth="0.6" />
+              <line x1="20" y1="28" x2="28" y2="28" stroke="hsl(222 30% 40%)" strokeWidth="0.6" />
+            </svg>
+            {/* Vertical separator */}
+            <div style={{ width: 1, height: 40, background: "hsl(222 20% 60%)" }} />
+            <div style={{ lineHeight: 1.3 }}>
+              <span
+                style={{
+                  fontFamily: "'Public Sans', sans-serif",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  letterSpacing: 1.5,
+                  color: "hsl(222 30% 25%)",
+                  display: "block",
+                }}
+              >
+                ARTIFICIAL
+              </span>
+              <span
+                style={{
+                  fontFamily: "'Public Sans', sans-serif",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  letterSpacing: 1.5,
+                  color: "hsl(222 30% 25%)",
+                  display: "block",
+                }}
+              >
+                INTELLIGENCE
+              </span>
+              <span
+                style={{
+                  fontFamily: "'Public Sans', sans-serif",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  letterSpacing: 1.5,
+                  color: "hsl(222 30% 25%)",
+                  display: "block",
+                }}
+              >
+                ACADEMY
+              </span>
+            </div>
           </div>
 
-          {/* Title */}
+          {/* CERTIFICATE heading */}
           <h2
             style={{
               fontFamily: "'Cinzel', serif",
-              fontSize: 32,
+              fontSize: 52,
               fontWeight: 700,
-              letterSpacing: 6,
-              color: "hsl(222 47% 11%)",
-              margin: "20px 0 6px",
+              letterSpacing: 4,
+              color: "hsl(222 30% 30%)",
+              margin: 0,
+              lineHeight: 1.1,
               textTransform: "uppercase",
             }}
           >
-            Certificate of Completion
+            Certificate
           </h2>
+          <p
+            style={{
+              fontFamily: "'Public Sans', sans-serif",
+              fontSize: 14,
+              fontWeight: 400,
+              letterSpacing: 4,
+              color: "hsl(222 20% 45%)",
+              margin: "4px 0 20px 4px",
+              textTransform: "uppercase",
+            }}
+          >
+            of Completion
+          </p>
 
+          {/* Presented to */}
           <p
             style={{
               fontSize: 13,
-              color: "hsl(215 16% 47%)",
-              marginBottom: 16,
-              letterSpacing: 1,
+              letterSpacing: 2,
+              color: "hsl(222 15% 40%)",
+              textTransform: "uppercase",
+              margin: "0 0 10px 0",
             }}
           >
             This certificate is proudly presented to
           </p>
 
-          {/* Student Name */}
+          {/* Horizontal line + Name */}
           <div
             style={{
-              borderBottom: "2px solid hsl(35 92% 33% / 0.5)",
-              paddingBottom: 6,
-              marginBottom: 18,
-              minWidth: 400,
+              borderTop: "1.5px solid hsl(222 20% 60% / 0.5)",
+              paddingTop: 14,
+              marginBottom: 16,
+              maxWidth: 520,
             }}
           >
             <span
               style={{
                 fontFamily: "'Playfair Display', serif",
-                fontSize: 38,
+                fontSize: 36,
                 fontWeight: 700,
                 fontStyle: "italic",
-                color: "hsl(222 47% 11%)",
+                color: "hsl(222 35% 20%)",
               }}
             >
               {name}
             </span>
           </div>
 
+          {/* Description */}
+          <p style={{ fontSize: 14, color: "hsl(222 15% 35%)", margin: "0 0 4px 0" }}>
+            for successfully participating in a
+          </p>
           <p
             style={{
-              fontSize: 14,
-              color: "hsl(222 47% 20%)",
-              maxWidth: 520,
-              lineHeight: 1.7,
-              marginBottom: 6,
+              fontSize: 22,
+              fontWeight: 700,
+              color: "hsl(222 30% 20%)",
+              margin: "0 0 6px 0",
             }}
           >
-            for the successful completion of the{" "}
-            <strong>5-Day GEN AI Workshop</strong>
+            5-Day GEN AI Workshop
           </p>
-
+          <p style={{ fontSize: 13, color: "hsl(222 15% 40%)", margin: "0 0 4px 0" }}>
+            Issued after successful assessment &amp; participation
+          </p>
           <p
             style={{
               fontSize: 12,
-              color: "hsl(215 16% 47%)",
-              marginBottom: 32,
+              fontStyle: "italic",
+              color: "hsl(222 12% 55%)",
+              margin: "0 0 0 0",
             }}
           >
-            Issued after successful assessment &amp; participation
+            * Issued upon verified participation and assessment
           </p>
 
-          {/* Bottom row: Date + Signature */}
+          {/* Spacer */}
+          <div style={{ flex: 1 }} />
+
+          {/* Bottom: Signature (left) + Date (right) */}
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "flex-end",
-              width: "100%",
-              maxWidth: 600,
             }}
           >
-            {/* Date */}
-            <div style={{ textAlign: "left" }}>
-              <p style={{ fontSize: 11, color: "hsl(215 16% 47%)", marginBottom: 2 }}>
-                Issue Date
-              </p>
-              <p style={{ fontSize: 14, fontWeight: 600, color: "hsl(222 47% 11%)" }}>
-                March 2026
-              </p>
-            </div>
-
             {/* Signature */}
-            <div style={{ textAlign: "center" }}>
+            <div>
               <p
                 style={{
                   fontFamily: "'Playfair Display', serif",
                   fontStyle: "italic",
-                  fontSize: 22,
-                  color: "hsl(222 47% 20%)",
-                  marginBottom: 2,
+                  fontSize: 28,
+                  color: "hsl(222 30% 20%)",
+                  margin: "0 0 4px 0",
+                  lineHeight: 1.2,
                 }}
               >
                 KDP Sree Adithya
               </p>
               <div
                 style={{
-                  width: 180,
+                  width: 220,
                   height: 1,
-                  background: "hsl(222 47% 11% / 0.3)",
-                  margin: "0 auto 4px",
+                  background: "hsl(222 20% 40% / 0.4)",
+                  marginBottom: 6,
                 }}
               />
-              <p style={{ fontSize: 11, color: "hsl(215 16% 47%)" }}>
+              <p
+                style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  letterSpacing: 2,
+                  color: "hsl(222 30% 20%)",
+                  margin: "0 0 2px 0",
+                  textTransform: "uppercase",
+                }}
+              >
+                K D P Sree Adithya
+              </p>
+              <p style={{ fontSize: 12, color: "hsl(222 15% 40%)", margin: 0 }}>
                 Co-Founder &amp; Director
+              </p>
+            </div>
+
+            {/* Issue Date */}
+            <div style={{ textAlign: "right", paddingBottom: 4 }}>
+              <p style={{ fontSize: 15, color: "hsl(222 20% 30%)", margin: 0 }}>
+                Issue Date: <strong>March 2026</strong>
               </p>
             </div>
           </div>
